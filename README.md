@@ -3,7 +3,7 @@
 Banco de dados relacional de um sebo online de livros usados (catálogo de obras e exemplares, clientes, pedidos, entrega, doações/trocas e contato).
 Projeto da disciplina de Banco de Dados — IMD/UFRN.
 
-**Equipe:** Bianca Bezerra Pires, Daniel Silva Martins e Thyago Pereira da Silva.
+**Alunos:** Bianca Bezerra Pires, Daniel Silva Martins e Thyago Pereira da Silva.
 
 ## Conteúdo do repositório
 
@@ -17,7 +17,6 @@ database/
 docs/
   DER_modelo_relacional.png                          Diagrama entidade-relacionamento
   Projeto_Sebo_Literario_Iteracao_2.pdf              Documento da Iteração 2
-  Sebo_Literario_Iteracao_2_Repositorio_e_Apresentacao.pdf   Repositório, integração opcional e roteiro
 ```
 
 Diagrama interativo: https://dbdiagram.io/d/trabalho-sebo-iteracao2-6ae63fbf8bf38111a8f7499d
@@ -53,7 +52,7 @@ Rode os comandos a partir da pasta raiz do repositório. Em todos eles, troque `
    **Resultado esperado:** 14 linhas com `ok = t` (true) e `tabelas_criadas = 14`.
    Se alguma linha mostrar `f`, o povoamento não foi concluído: rode o passo 2 de novo (o `DDL_esquema.sql` apaga e recria as tabelas, então pode ser repetido).
 
-4. Execute as consultas e as transações de exemplo:
+4. Execute as consultas e as transações de exemplo. Cada uma imprime, antes do resultado, um texto explicando as tabelas usadas, o que mostra, como ler e o que significa no contexto do sebo (útil para a apresentação):
 
    ```bash
    psql -U postgres -d sebo_literario -f database/Consultas_analiticas.sql
@@ -61,6 +60,17 @@ Rode os comandos a partir da pasta raiz do repositório. Em todos eles, troque `
    ```
 
    As transações terminam em `ROLLBACK`, então não alteram os dados e podem ser repetidas à vontade.
+
+### Acentos aparecendo errados no Windows?
+
+Se palavras como "Memórias" aparecerem como `Mem├│rias`, é só a codificação do terminal. Antes de rodar o `psql`, execute no PowerShell:
+
+```powershell
+chcp 65001
+$env:PGCLIENTENCODING = "UTF8"
+```
+
+Se ainda aparecer errado, troque a fonte do terminal para uma que suporte acentos (por exemplo, Consolas).
 
 ## Como executar (pgAdmin)
 

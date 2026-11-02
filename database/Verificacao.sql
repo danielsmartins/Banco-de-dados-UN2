@@ -2,6 +2,11 @@
 -- VERIFICAÇÃO: confere se o banco foi criado e povoado corretamente.
 -- Todas as linhas devem mostrar ok = true.
 -- ==============================================================================
+\set QUIET on
+\echo
+\echo 'VERIFICAÇÃO DO BANCO: cada linha compara o número de linhas da tabela com o esperado.'
+\echo 'Tudo certo quando a coluna ok mostra t (true) em todas as linhas.'
+\pset title 'Verificação do povoamento'
 SELECT t.tabela, t.linhas, t.esperado, (t.linhas = t.esperado) AS ok
 FROM (
     SELECT 'Genero' AS tabela, COUNT(*) AS linhas, 4 AS esperado FROM Genero
@@ -20,7 +25,10 @@ FROM (
     UNION ALL SELECT 'Mensagem_Contato', COUNT(*), 2 FROM Mensagem_Contato
 ) t;
 
--- Deve retornar 14 (número de tabelas do modelo)
+\echo
+\echo 'Número de tabelas criadas (esperado: 14):'
+\pset title
 SELECT COUNT(*) AS tabelas_criadas
 FROM information_schema.tables
 WHERE table_schema = 'public' AND table_type = 'BASE TABLE';
+\set QUIET off
