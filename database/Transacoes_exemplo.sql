@@ -63,8 +63,8 @@ ROLLBACK;
 \echo 'Passo    : o mesmo UPDATE condicional da transação 1 (só reserva se disponivel = TRUE).'
 \echo 'Resultado esperado: nenhuma linha é reservada. A aplicação percebe que 0 linhas foram'
 \echo '           afetadas, dá ROLLBACK e avisa o cliente que o livro não está mais disponível.'
-\echo 'Em termos do sebo: como cada exemplar é uma peça única, o mesmo livro nunca é vendido'
-\echo '           duas vezes, nem se duas pessoas clicarem em "comprar" ao mesmo tempo.'
+\echo 'Em termos do sebo: cada exemplar é uma cópia física individual, então a mesma cópia'
+\echo '           nunca é vendida duas vezes, nem se duas pessoas clicarem em "comprar" ao mesmo tempo.'
 \pset title 'ANTES - exemplar 1 (já vendido)'
 SELECT id_exemplar, disponivel FROM Exemplar WHERE id_exemplar = 1;
 \echo '>> Executando a tentativa de reserva...'
